@@ -22,6 +22,7 @@ const MediaManagementScreenIndex = () => {
             value: item,
             label: item
         })))
+        setContentType(false);
     }
     return (
         <MediaManagementScreen selectedIndex={selectedIndex} onPressContentItem={onPressContentItem} contentType={contentType} setContentType={setContentType} contentTypeList={contentTypeList} setContentTypeList={setContentTypeList} contentTypeValue={contentTypeValue} onSetCategoryValue={onSetCategoryValue} values={values} isVisible={isVisible} setIsVisible={setIsVisible} sliderValuesChange={sliderValuesChange} />

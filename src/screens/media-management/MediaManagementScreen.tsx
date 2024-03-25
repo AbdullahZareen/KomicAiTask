@@ -1,5 +1,5 @@
-import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView, Platform, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native'
-import React, { useState } from 'react'
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView, Platform, KeyboardAvoidingView } from 'react-native'
+import React from 'react'
 import { mediaArray } from '../../constants/DataConst'
 import { ColorConst, ImageConst } from '../../constants';
 import { SizeClass } from '../../utils/AppTheme';
@@ -60,7 +60,7 @@ const MediaManagementScreen = ({ selectedIndex, onPressContentItem, contentType,
                         <Text style={styles.questionText}>Which type of "{mediaArray[selectedIndex]?.title}" content are you creating?</Text>
                         <DropDown isOpen={contentType} value={contentTypeValue} items={contentTypeList} setIsOpen={setContentType} setItems={setContentTypeList} zIndex={4000} zIndexInverse={1000} Style={{}} placeHolder={"Select"} onSelectItem={onSetCategoryValue} searchable={true} searchPlaceholder="Search" searchTextInputStyle={{ borderColor: ColorConst.borderGray, color: ColorConst.textColor1 }} />
                         <Text style={styles.questionText}>Set the number of words for output text</Text>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 15, backgroundColor: ColorConst.black, padding: 10, borderRadius: 10 }}>
+                        <View style={styles.sliderView}>
                             <Text style={styles.value}>100</Text>
                             <MultiSlider
                                 values={values}
@@ -155,11 +155,20 @@ const styles = StyleSheet.create({
         backgroundColor: ColorConst.white,
         width: SizeClass.getScreenWidthFromPercentage(90),
         alignSelf: "center",
+        alignItems: "center",
         padding: SizeClass.DEFAULT_MARGIN / 1.5,
         borderRadius: SizeClass.LARGE_MARGIN * 2,
     },
     buttonText: {
         fontSize: SizeClass.scaleFont(16),
         fontFamily: CustomFontFamily.POPPINS_REGULAR
+    },
+    sliderView: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 15,
+        backgroundColor: ColorConst.black,
+        padding: 10,
+        borderRadius: 10
     }
 })
