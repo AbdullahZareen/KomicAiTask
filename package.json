@@ -12,7 +12,6 @@
   "dependencies": {
     "@furkankaya/react-native-linear-text-gradient": "^1.0.2",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
-    "@react-native-community/slider": "^4.5.0",
     "@react-native-masked-view/masked-view": "^0.3.1",
     "patch-package": "^8.0.0",
     "react": "18.2.0",

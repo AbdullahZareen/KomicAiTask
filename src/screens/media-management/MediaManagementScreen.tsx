@@ -41,14 +41,10 @@ const MediaManagementScreen = ({ selectedIndex, onPressContentItem, contentType,
     return (
         <SafeAreaView style={styles.mainContainer}>
             <Header />
-            <KeyboardAvoidingView
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                keyboardVerticalOffset={10}
-                style={{ flex: 1 }}
-            >
-                <ScrollView bounces={false} style={{}}>
-                    <SharedSVG svgType={"top-header"} style={{ margin: SizeClass.DEFAULT_MARGIN, marginEnd: 0 }} width={SizeClass.getScreenWidthFromPercentage(80)} />
-                    <View style={{ marginStart: SizeClass.DEFAULT_MARGIN, marginEnd: SizeClass.DEFAULT_MARGIN, gap: SizeClass.DEFAULT_MARGIN, flex: 1, paddingBottom: 50 }} >
+            <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={10} style={{ flex: 1 }}>
+                <ScrollView bounces={false} style={{}} nestedScrollEnabled={true} scrollEnabled={contentType ? false : true} showsVerticalScrollIndicator={false}>
+                    <SharedSVG svgType={"top-header"} style={{ margin: SizeClass.DEFAULT_MARGIN, marginEnd: 0 }} width={SizeClass.getScreenWidthFromPercentage(80)} s />
+                    <View style={{ marginStart: SizeClass.DEFAULT_MARGIN, marginEnd: SizeClass.DEFAULT_MARGIN, gap: SizeClass.DEFAULT_MARGIN, flex: 1, paddingBottom: Platform.OS === 'ios' ? 50 : 120 }} >
                         <View>
                             <Text style={styles.heading}>ContentType</Text>
                             <Text style={styles.subHeading}>Choose a content type that best fits your needs.</Text>
@@ -64,7 +60,7 @@ const MediaManagementScreen = ({ selectedIndex, onPressContentItem, contentType,
                             <Text style={styles.value}>100</Text>
                             <MultiSlider
                                 values={values}
-                                sliderLength={280}
+                                sliderLength={SizeClass.getScreenWidthFromPercentage(60)}
                                 min={100}
                                 max={1000}
                                 step={1}
@@ -74,6 +70,7 @@ const MediaManagementScreen = ({ selectedIndex, onPressContentItem, contentType,
                                 }}
                                 unselectedStyle={{
                                     backgroundColor: ColorConst.dividerColor,
+
                                 }}
                                 onValuesChangeFinish={() => { setIsVisible(false) }}
                                 onValuesChangeStart={() => { setIsVisible(true) }}
@@ -157,6 +154,8 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         alignItems: "center",
         padding: SizeClass.DEFAULT_MARGIN / 1.5,
+        paddingStart: SizeClass.LARGE_MARGIN,
+        paddingEnd: SizeClass.LARGE_MARGIN,
         borderRadius: SizeClass.LARGE_MARGIN * 2,
     },
     buttonText: {
@@ -166,6 +165,7 @@ const styles = StyleSheet.create({
     sliderView: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'center',
         gap: 15,
         backgroundColor: ColorConst.black,
         padding: 10,
